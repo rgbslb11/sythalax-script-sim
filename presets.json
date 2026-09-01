@@ -1,0 +1,158 @@
+{
+  "version": "0.5",
+  "clock_native_sec": 2400,
+  "notes": "Presets from SYTHALAX script-sim desk. OPERATED vs EA_SIM.",
+  "games": [
+    {
+      "id": "W2-AUB-BAY",
+      "label": "W2 · Auburn 28 Baylor 24 (N Atlanta)",
+      "tag": "SHADOW",
+      "site": "neutral",
+      "clock": "40:00",
+      "home": "Auburn",
+      "away": "Baylor",
+      "home_q": [7, 14, 0, 7],
+      "away_q": [0, 0, 24, 0],
+      "pins": {
+        "home_plays": 72,
+        "away_plays": 84,
+        "home_top": "18:31",
+        "away_top": "21:29",
+        "home_to": 1,
+        "away_to": 1
+      }
+    },
+    {
+      "id": "W1-NMSU-FSU",
+      "label": "W1 · NMSU 13 @ FSU 28",
+      "tag": "OPERATED",
+      "site": "home",
+      "clock": "40:00",
+      "home": "Florida State",
+      "away": "New Mexico State",
+      "home_q": [7, 7, 7, 7],
+      "away_q": [3, 0, 0, 10],
+      "pins": {
+        "home_plays": 66,
+        "away_plays": 53,
+        "home_top": "24:14",
+        "away_top": "15:46"
+      }
+    },
+    {
+      "id": "W1-WVU-UK",
+      "label": "W1 · WVU 35 Kentucky 32 (N Orlando) ANOMALY",
+      "tag": "OPERATED",
+      "site": "neutral",
+      "clock": "40:00",
+      "home": "Kentucky",
+      "away": "West Virginia",
+      "home_q": [7, 7, 12, 6],
+      "away_q": [3, 3, 18, 11],
+      "pins": {
+        "home_plays": 50,
+        "away_plays": 46,
+        "home_top": "23:15",
+        "away_top": "16:45",
+        "home_nonoff_pts": 8,
+        "away_nonoff_pts": 6,
+        "home_nonoff_td": 1,
+        "away_nonoff_td": 1
+      },
+      "flags": ["Printed 67 = 53 offensive + 14 sudden-change."]
+    },
+    {
+      "id": "W1-MEM-UNLV",
+      "label": "W1 · Memphis 27 @ UNLV 21",
+      "tag": "OPERATED",
+      "site": "home",
+      "clock": "40:00",
+      "home": "UNLV",
+      "away": "Memphis",
+      "home_q": [0, 14, 7, 0],
+      "away_q": [0, 7, 17, 3],
+      "pins": {
+        "home_plays": 53,
+        "away_plays": 59,
+        "home_top": "17:12",
+        "away_top": "22:48"
+      },
+      "flags": ["UNLV RULE. I-H Normal MEM -5.7 hit."]
+    },
+    {
+      "id": "EA-UK38",
+      "label": "EA · UK 38 WVU 20",
+      "tag": "EA_SIM",
+      "site": "unknown",
+      "clock": "40:00",
+      "home": "Kentucky",
+      "away": "West Virginia",
+      "home_q": [0, 14, 14, 10],
+      "away_q": [0, 3, 10, 7],
+      "pins": {
+        "home_plays": 72,
+        "away_plays": 99,
+        "home_top": "18:12",
+        "away_top": "21:48",
+        "home_ypp": 5.7,
+        "away_ypp": 5.6
+      }
+    },
+    {
+      "id": "EA-YALE34",
+      "label": "EA · Yale 34 Arizona 31",
+      "tag": "EA_SIM",
+      "site": "unknown",
+      "clock": "40:00",
+      "home": "Yale",
+      "away": "Arizona",
+      "home_q": [14, 7, 7, 6],
+      "away_q": [7, 14, 7, 3],
+      "pins": {
+        "home_plays": 68,
+        "away_plays": 72,
+        "home_top": "21:47",
+        "away_top": "18:13",
+        "home_nonoff_td": 1
+      }
+    },
+    {
+      "id": "EA-ARK20",
+      "label": "EA · Arkansas 20 Yale 10",
+      "tag": "EA_SIM",
+      "site": "home",
+      "clock": "40:00",
+      "home": "Arkansas",
+      "away": "Yale",
+      "home_q": [3, 7, 3, 7],
+      "away_q": [0, 0, 3, 7],
+      "pins": {
+        "home_plays": 62,
+        "away_plays": 55,
+        "home_top": "21:23",
+        "away_top": "18:37"
+      }
+    },
+    {
+      "id": "EA-MIA35",
+      "label": "EA · Miami 35 FSU 7",
+      "tag": "EA_SIM",
+      "site": "home",
+      "clock": "40:00",
+      "home": "Miami",
+      "away": "Florida State",
+      "home_q": [6, 9, 14, 6],
+      "away_q": [0, 0, 0, 7],
+      "pins": {
+        "home_plays": 62,
+        "away_plays": 50,
+        "home_top": "25:12",
+        "away_top": "14:48",
+        "home_ypp": 8.1,
+        "away_ypp": 3.0,
+        "home_nonoff_td": 2
+      },
+      "flags": ["2 off TD + 2 non-off TD + 3 FG. Do not hang 35 as offensive."]
+    }
+  ]
+}
