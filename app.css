@@ -1,15 +1,15 @@
 :root {
-  --navy: #1b2a4a;
-  --navy-2: #122038;
+  --navy: #3a3a3c;
+  --navy-2: #2c2c2e;
   --gold: #c4a35a;
-  --gold-2: #f5e6b8;
-  --ink: #e8e2d4;
-  --muted: #9aa3b5;
-  --line: #2c3d5c;
+  --gold-2: #e6d9b4;
+  --ink: #ececec;
+  --muted: #a3a3a3;
+  --line: #555557;
   --good: #7dcea0;
   --bad: #e07a7a;
   --amber: #e0b35a;
-  --panel: #152238;
+  --panel: #3a3a3c;
 }
 * { box-sizing: border-box; }
 html, body {
@@ -36,11 +36,11 @@ header h1 {
 header h1 span { color: var(--gold); }
 header .meta { color: var(--muted); font-size: 11px; }
 .banner {
-  background: #3a2418;
+  background: #3a3a3c;
   color: var(--gold-2);
   padding: 8px 22px;
   font-size: 12px;
-  border-bottom: 1px solid #5a3a22;
+  border-bottom: 1px solid #555557;
 }
 .wrap {
   display: grid;
@@ -127,10 +127,10 @@ th { color: var(--gold); font-size: 11px; font-weight: 650; }
   border-radius: 3px;
   margin-left: 6px;
 }
-.tag.shadow { background: #3a2a12; color: var(--gold); }
-.tag.operated { background: #1c3a2a; color: var(--good); }
-.tag.ea { background: #2a2038; color: #c9b4e8; }
-.tag.anomaly { background: #3a1c1c; color: var(--bad); }
+.tag.shadow { background: #4a4a3a; color: var(--gold); }
+.tag.operated { background: #2a3a30; color: var(--good); }
+.tag.ea { background: #3a3a44; color: #c9b4e8; }
+.tag.anomaly { background: #4a2a2a; color: var(--bad); }
 .flags { margin-top: 10px; }
 .flags li { margin: 4px 0; color: var(--gold-2); }
 .scoreline {
@@ -171,11 +171,11 @@ footer {
 .btn-accept {
   width: 100%;
   margin-top: 8px;
-  background: #2a4a38;
+  background: #2a3a30;
   color: var(--good);
   padding: 10px;
   letter-spacing: 0.04em;
-  border: 1px solid #3a6a4a;
+  border: 1px solid #3a5a44;
 }
 .btn-accept:disabled { opacity: 0.4; cursor: not-allowed; }
 .howto {
