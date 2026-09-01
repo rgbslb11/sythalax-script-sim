@@ -165,6 +165,8 @@
   function offPoints(printed, pins, side) {
     var nonTd = (pins && pins[side + "_nonoff_td"]) || 0;
     var nonPts = (pins && pins[side + "_nonoff_pts"]) || 0;
+    if (nonTd < 0) nonTd = 0;
+    if (nonPts < 0) nonPts = 0;
     if (nonPts) return Math.max(0, printed - nonPts);
     if (nonTd) return Math.max(0, printed - 6 * nonTd);
     return printed;
