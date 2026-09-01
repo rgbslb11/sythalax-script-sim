@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SYTHALAX Script-Sim v0.5</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header>
+    <h1>SYTHALAX <span>SCRIPT-SIM</span> v0.5</h1>
+    <div class="meta">SHADOW · single-game ticket · not a House write</div>
+  </header>
+  <div class="banner">
+    10:00 quarters = 40:00 game. 15:00 quarters = 60:00 game.
+    Non-off TDs strip the printed score before efficiency is built.
+    Reset and Accept both roll a new seed so you cannot reuse a draw by accident.
+  </div>
+  <div class="wrap">
+    <aside class="panel">
+      <h2>1. Ticket</h2>
+      <label>Start from a saved game (optional)</label>
+      <select id="preset"></select>
+      <div style="margin-top:6px"><span id="preset-tag" class="tag shadow">SHADOW</span></div>
+      <div class="row2">
+        <div><label>Away team</label><input id="away" placeholder="Away" /></div>
+        <div><label>Home / designated home</label><input id="home" placeholder="Home" /></div>
+      </div>
+      <div class="row2">
+        <div>
+          <label>Site</label>
+          <select id="site">
+            <option value="home">home</option>
+            <option value="neutral">neutral</option>
+            <option value="unknown">unknown</option>
+          </select>
+        </div>
+        <div>
+          <label>Quarter length</label>
+          <select id="qlen">
+            <option value="10">10:00 quarters → 40:00</option>
+            <option value="15">15:00 quarters → 60:00</option>
+          </select>
+        </div>
+      </div>
+      <label>Away score by quarter (Q1 Q2 Q3 Q4)</label>
+      <div class="qgrid">
+        <input id="away_q1" type="number" value="0" />
+        <input id="away_q2" type="number" value="0" />
+        <input id="away_q3" type="number" value="0" />
+        <input id="away_q4" type="number" value="0" />
+        <input disabled placeholder="Σ" />
+      </div>
+      <label>Home score by quarter</label>
+      <div class="qgrid">
+        <input id="home_q1" type="number" value="0" />
+        <input id="home_q2" type="number" value="0" />
+        <input id="home_q3" type="number" value="0" />
+        <input id="home_q4" type="number" value="0" />
+        <input disabled placeholder="Σ" />
+      </div>
+      <h2 style="margin-top:16px">2. Pins you actually have</h2>
+      <p class="hint">Leave blank if you do not have the number. Blank = the engine guesses.</p>
+      <div class="row2">
+        <div><label>Away plays</label><input id="away_plays" type="number" placeholder="blank = guess" /></div>
+        <div><label>Home plays</label><input id="home_plays" type="number" placeholder="blank = guess" /></div>
+      </div>
+      <div class="row2">
+        <div><label>Away TOP (mm:ss)</label><input id="away_top" placeholder="16:45" /></div>
+        <div><label>Home TOP (mm:ss)</label><input id="home_top" placeholder="23:15" /></div>
+      </div>
+      <div class="row2">
+        <div><label>Away turnovers</label><input id="away_to" type="number" placeholder="blank" /></div>
+        <div><label>Home turnovers</label><input id="home_to" type="number" placeholder="blank" /></div>
+      </div>
+      <h2 style="margin-top:16px">3. Sudden-change strip</h2>
+      <p class="hint">Pick-six, KO/fumble TD, blocked-PAT 2. These are not offensive points.</p>
+      <div class="row2">
+        <div><label>Away non-off TDs</label><input id="away_nonoff_td" type="number" placeholder="0" /></div>
+        <div><label>Home non-off TDs</label><input id="home_nonoff_td" type="number" placeholder="0" /></div>
+      </div>
+      <div class="row2">
+        <div><label>Away non-off points</label><input id="away_nonoff_pts" type="number" placeholder="or total pts" /></div>
+        <div><label>Home non-off points</label><input id="home_nonoff_pts" type="number" placeholder="or total pts" /></div>
+      </div>
+      <h2 style="margin-top:16px">4. Calibration (optional)</h2>
+      <label class="check"><input type="checkbox" id="calibration" /> Calibration on — keep only draws near observed YPP / plays</label>
+      <div class="row2">
+        <div><label>Away observed YPP</label><input id="away_ypp" type="number" step="0.1" placeholder="e.g. 5.6" /></div>
+        <div><label>Home observed YPP</label><input id="home_ypp" type="number" step="0.1" placeholder="e.g. 5.7" /></div>
+      </div>
+      <div class="row2">
+        <div><label>Draws</label><input id="draws" type="number" value="800" /></div>
+        <div><label>Seed (auto)</label><input id="seed" type="number" /></div>
+      </div>
+      <button class="btn-run" id="run">RUN POSTERIOR</button>
+      <button class="btn-accept" id="accept" disabled>ACCEPT THIS DRAW · NEW SEED</button>
+      <button class="btn-ghost" id="clear">Reset ticket · new seed</button>
+      <button class="btn-ghost" id="export">Download JSON</button>
+      <button class="btn-ghost" id="help-toggle">Show / hide directions</button>
+      <ul class="flags" id="flags"></ul>
+    </aside>
+    <main>
+      <div class="howto open" id="howto">
+        <h2>How to run one game</h2>
+        <ol>
+          <li><b>Pick a preset</b> or type two team names.</li>
+          <li><b>Set quarter length.</b> Synthetic world is <b>10:00 quarters = 40:00</b>.</li>
+          <li><b>Enter Q1 Q2 Q3 Q4</b> for away, then home.</li>
+          <li><b>Pin only what you saw.</b></li>
+          <li><b>Strip sudden-change</b> with non-off TDs or points.</li>
+          <li><b>Calibration</b> only when checking a known box.</li>
+          <li><b>Hit RUN POSTERIOR.</b> p50 is the lean. p10–p90 is the band.</li>
+          <li><b>Use Off pts / drive</b> after a strip.</li>
+          <li><b>ACCEPT</b> logs the draw and rolls a new seed.</li>
+          <li><b>Reset</b> clears the ticket and rolls a new seed.</li>
+        </ol>
+      </div>
+      <div class="status" id="status">New seed is already in the ticket. Load a preset or type quarters, then RUN.</div>
+      <div class="scoreline" id="scoreline">
+        <div class="team">Away</div>
+        <div class="pts">—</div>
+        <div class="team">Home</div>
+      </div>
+      <div class="kpis" id="kpis"></div>
+      <div id="out"></div>
+      <div class="panel">
+        <h2>Accepted draws this session</h2>
+        <pre id="accept-log" style="white-space:pre-wrap;color:#9aa3b5;font-size:11px;margin:0">None yet. RUN, then ACCEPT.</pre>
+      </div>
+      <div class="panel">
+        <h2>Last ticket JSON</h2>
+        <pre id="json-out" style="white-space:pre-wrap;color:#9aa3b5;font-size:11px;margin:0">{}</pre>
+      </div>
+    </main>
+  </div>
+  <footer>QUALIFIED_EDGE stays BLOCKED. This page does not publish a number.</footer>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
