@@ -7,6 +7,8 @@ SHADOW. Does not write House.
 
 **Live:** https://rgbslb11.github.io/sythalax-script-sim/
 
+**BOX PAD (iPhone):** https://rgbslb11.github.io/sythalax-script-sim/box.html
+
 If that 404s, turn Pages on once:
 
 1. Repo → **Settings** → **Pages**
@@ -14,13 +16,19 @@ If that 404s, turn Pages on once:
 3. Branch: **main** / folder: **/ (root)**
 4. Save. Wait one minute. Refresh the URL.
 
+## BOX PAD — Saturday phone box
+
+The 6×2 grid (Q1 Q2 Q3 Q4 OT T) with the T column as a formula.
+Tap a cell, tap +7 / +3 / +2 / +1. Slate lives in the phone (localStorage).
+Safari → Share → Add to Home Screen. No Excel, no rebuilt grid.
+
 ## Local
 
 ```
 python3 -m http.server 8765
 ```
 
-Then http://localhost:8765
+Then http://localhost:8765 and http://localhost:8765/box.html
 
 ## Clock
 
